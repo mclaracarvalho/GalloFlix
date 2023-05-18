@@ -16,6 +16,6 @@ namespace GalloFlix.DataTransferObjects;
         [Display(Name = "Manter Conectado?")]
         public bool RememberMe { get; set; }
         
-        public string returnUrl { get; set; }
+        public string ReturnUrl { get; set; }
 
     }

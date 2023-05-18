@@ -5,5 +5,27 @@
 
 <div class="text-center">
     <h1 class="display-4">Login</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+@* TagHelper - Auxiliar de  Tag *@
+<form method="post" class="col-md-6 offset-md-3">
+    <div asp-validation-sumary="All" class="text-danger"></div>
+  <div class="mb-3">
+    <label asp-for="Email" class="form-label"></label>
+    <input asp-for="Email" class="form-control">
+    <span asp-validation-for class="form-text"></span>
+  </div>
+  <div class="mb-3">
+    <label asp-for="Password" class="form-label"></label>
+    <input asp-for="Password" class="form-control">
+    <span asp-validation-for="Password" class="text-danger"></span>
+  </div>
+  <div class="mb-3 form-check">
+    <input asp-for="RememberMe" class="form-check-input">
+    <label asp-for="RememberMe" class="form-check-label"></label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Script {
+    <partial name="_ValidationScriptPartial"></partial>
+}
