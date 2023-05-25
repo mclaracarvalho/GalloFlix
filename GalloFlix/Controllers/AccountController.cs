@@ -19,6 +19,8 @@ public class AccountController : Controller
          UserManager<AppUser> userManager)
     {
         _logger = logger;
+        _signInManager = signInManager;
+        _userManager = userManager;
     }
 
     public IActionResult Index()

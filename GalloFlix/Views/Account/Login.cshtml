@@ -1,18 +1,22 @@
 ﻿@model GalloFlix.DataTransferObjects.LoginDto;
 @{
-    ViewData["Title"] = "Login";
+  ViewData["Title"] = "Login";
+}
+
+@section Styles {
+<link rel="stylesheet" href="~/css/login.css">
 }
 
 <div class="text-center">
-    <h1 class="display-4">Login</h1>
+  <h1 class="display-4">Login</h1>
 </div>
-@* TagHelper - Auxiliar de  Tag *@
-<form method="post" class="col-md-6 offset-md-3">
-    <div asp-validation-sumary="All" class="text-danger"></div>
+@* TagHelper - Auxiliar de Tag *@
+<form method="post" class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-5">
+  <div asp-validation-sumary="All" class="text-danger" ></div>
   <div class="mb-3">
     <label asp-for="Email" class="form-label"></label>
     <input asp-for="Email" class="form-control">
-    <span asp-validation-for="Email" class="form-text"></span>
+    <span asp-validation-for="Email" class="text-danger"></span>
   </div>
   <div class="mb-3">
     <label asp-for="Password" class="form-label"></label>
@@ -23,9 +27,30 @@
     <input asp-for="RememberMe" class="form-check-input">
     <label asp-for="RememberMe" class="form-check-label"></label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="w-100 btn btn-primary">Enviar</button>
+
+  <a asp-action="Forget" class="w-100 d-block text-center forgetPassword mt-3">
+    Esquecu a senha?</a>
+
+  <div class="border-text"></div>
+
+  <a asp-action="Register" class="w-100 btn btn-success mt-1">Criar Conta</a>
 </form>
 
-@section Script {
-    <partial name="_ValidationScriptPartial"></partial>
+@section Scripts {
+<partial name="_ValidationScriptsPartial"></partial>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  let mensagemErro = '';
+  $(".validation-sumary-errors ul li").each(function () {
+    mensagemErro += $(this).text() + '<br/>'
+  });
+  if (mensagemErro != '') {
+    Swal.fire(
+      title: 'Acesso Negado',
+      text: mensagemErro,
+      icon: 'error'
+    );
+  }
+</script>
 }
