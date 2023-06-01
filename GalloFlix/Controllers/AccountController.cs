@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GalloFlix.Controllers;
 
-[Authorize(Roles = "Administrador")]
 public class AccountController : Controller
 {
     private readonly ILogger<AccountController> _logger;
@@ -23,6 +22,7 @@ public class AccountController : Controller
         _userManager = userManager;
     }
 
+    [Authorize(Roles = "Administrador")]
     public IActionResult Index()
     {
         return View();
@@ -68,6 +68,14 @@ public class AccountController : Controller
             ModelState.AddModelError("login", "Usuário e/ou Senha Inválidos!!!");
         }
         return View(login);
+    }
+
+
+
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
     }
 
 
