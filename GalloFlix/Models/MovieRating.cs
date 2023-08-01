@@ -11,8 +11,8 @@ namespace GalloFlix.Models;
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; } // propriedade de navegação
 
-        [Required]
-        public string UserId { get; set; }
+        [Key, Column(Order = 2)]
+         public string UserId { get; set; }
         [ForeignKey("UserId")]
         public AppUser User { get; set; }
 
@@ -20,5 +20,5 @@ namespace GalloFlix.Models;
         public byte RatingValue { get; set; }
 
         [Required]
-        public DateTime RatingDate { get; set; } = DateTime.Now;
+        public DateTime RatingDate { get; set; }
     }

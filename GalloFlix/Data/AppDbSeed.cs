@@ -60,7 +60,7 @@ namespace GalloFlix.Data;
             builder.Entity<AppUser>().HasData(users);
             #endregion
 
-            #region Populate AppUser Role - Usuário e seu Perfil
+            #region Populate UserRole - Usuário com Perfil
             List<IdentityUserRole<string>> userRoles = new()
             {
                 new IdentityUserRole<string>()

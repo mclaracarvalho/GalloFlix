@@ -20,7 +20,7 @@ public class Movie
 
     [Display(Name = "Sinopse")]
     [Required(ErrorMessage = "A Sinopse é obrigatória")]
-    [StringLength(8000, ErrorMessage = "A Sinopse deve possuir no máximo 8000 caracteres")]
+    [StringLength(8000, ErrorMessage = "A Sinopse deve possuir no máximo 5000 caracteres")]
 
      public string Synopsis { get; set; }
 

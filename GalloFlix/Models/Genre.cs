@@ -10,8 +10,8 @@ namespace GalloFlix.Models;
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public byte Id { get; set; }
         [Display(Name = "Nome")]
-        [Required(ErrorMessage ="O nome é obrigatório")]
-        [StringLength(30, ErrorMessage = "O nome deve possuir no máximo 30 caracteres", MinimumLength = 5)]
+        [Required(ErrorMessage ="O nome do Gênero é obrigatório")]
+        [StringLength(30, ErrorMessage = "O Nome deve possuir no máximo 30 caracteres")]
         public string Name { get; set; }
 
         public ICollection<MovieGenre> Movies { get; set; }

@@ -13,15 +13,15 @@ builder.Services.AddControllersWithViews();
 string conn = builder.Configuration.GetConnectionString("GalloFlix");
 var version = ServerVersion.AutoDetect(conn);
 
+// Serviço de conexão com banco de dados
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(conn, version)
 );
 
+// Serviço de gestão de usuário - identity
 builder.Services.AddIdentity<AppUser, IdentityRole>()  //deixar claro onde será armezanados os dados:
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();                                             
-
-builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 

@@ -7,6 +7,7 @@ namespace GalloFlix.Models;
     public class MovieComment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -24,5 +25,5 @@ namespace GalloFlix.Models;
         public string CommentText { get; set; }
 
         [Required]
-        public DateTime CommentDate { get; set; } = DateTime.Now;
+        public DateTime CommentDate { get; set; }
     }

@@ -18,52 +18,52 @@ namespace GalloFlix.Data;
         public DbSet<MovieGenre> MovieGenres { get; set; }
         public DbSet<MovieRating> MovieRatings { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder builder) // void não tem retorno
         {
             base.OnModelCreating(builder);
-            AppDbSeed seed = new(builder);
+            AppDbSeed appDbSeedseed = new(builder);
 
             // Fluent API
             // Personalizar as tabelas do Identity
             #region Personalização do Identity
             builder.Entity<IdentityUser>(
-                iu => { iu.ToTable("Users"); }
+                b => { b.ToTable("Users"); }
             ); 
 
             builder.Entity<IdentityUserClaim<string>>(
-                iu => { iu.ToTable("UserClains"); }
+                b => { b.ToTable("UserClains"); }
             );
 
             builder.Entity<IdentityUserLogin<string>>(
-                iu => { iu.ToTable("UserLogins"); }
+                b => { b.ToTable("UserLogins"); }
             );  
 
             builder.Entity<IdentityUserToken<string>>(
-                iu => { iu.ToTable("UserTokens"); }
+                b => { b.ToTable("UserTokens"); }
             ); 
 
             builder.Entity<IdentityRole>(
-                iu => { iu.ToTable("Roles"); }
+                b => { b.ToTable("Roles"); }
             ); 
 
             builder.Entity<IdentityRoleClaim<string>>(
-                iu => { iu.ToTable("RoleClains"); }
+                b => { b.ToTable("RoleClains"); }
             ); 
 
             builder.Entity<IdentityUserRole<string>>(
-                iu => { iu.ToTable("UserRoles"); }
+                b => { b.ToTable("UserRoles"); }
             ); 
             #endregion
 
             #region Many To Many - MovieComment 
             builder.Entity<MovieComment>()
                 .HasOne(mc => mc.Movie)
-                .WithMany(m => m.Comments)
+                .WithMany(m=> m.Comments)
                 .HasForeignKey(mc => mc.MovieId);
 
             builder.Entity<MovieComment>()
                 .HasOne(mc => mc.User)
-                .WithMany(m => m.Comments)
+                .WithMany(u => u.Comments)
                 .HasForeignKey(mc => mc.UserId);
             #endregion
 
