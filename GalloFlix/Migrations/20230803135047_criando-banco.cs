@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GalloFlix.Migrations
 {
-    public partial class criarbanco : Migration
+    public partial class criandobanco : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -36,7 +36,7 @@ namespace GalloFlix.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TitleOriginal = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
+                    OriginalTitle = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Synopsis = table.Column<string>(type: "varchar(8000)", maxLength: 8000, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -139,7 +139,7 @@ namespace GalloFlix.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "RoleClains",
+                name: "RoleClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -153,9 +153,9 @@ namespace GalloFlix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoleClains", x => x.Id);
+                    table.PrimaryKey("PK_RoleClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RoleClains_Roles_RoleId",
+                        name: "FK_RoleClaims_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
@@ -223,7 +223,7 @@ namespace GalloFlix.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "UserClains",
+                name: "UserClaims",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -237,9 +237,9 @@ namespace GalloFlix.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserClains", x => x.Id);
+                    table.PrimaryKey("PK_UserClaims", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserClains_Users_UserId",
+                        name: "FK_UserClaims_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
@@ -329,20 +329,20 @@ namespace GalloFlix.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "2f3663f1-42f3-4519-aa52-ede63f3567e0", "f4539b67-772c-4dc6-bfc0-b3d3c6ada8fd", "Administrador", "ADMINISTRADOR" },
-                    { "818d51d9-0caa-441a-a52a-4d1c46e51cff", "c1571980-e337-423a-8d29-ba78b55d85ff", "Moderador", "MODERADOR" },
-                    { "bbb21ce5-0043-495b-9c56-68d5201affa4", "ff99b45d-3311-4ec9-a56b-2d8f19ea45b1", "Usuário", "USUÁRIO" }
+                    { "6bc9d85b-fbfb-43a9-b1b2-3b6ddb200bd2", "5d2324bb-4232-4f19-9b59-782419a68de3", "Administrador", "ADMINISTRADOR" },
+                    { "9c17955c-bbdc-4048-ba9d-8c232ea24803", "b79c8bc1-6496-41a0-b063-cbfb09450753", "Moderador", "MODERADOR" },
+                    { "9c65df18-5646-4315-81b3-58655e7818c2", "7bed6543-5804-4661-87ea-875a67046e5e", "Usuário", " USUÁRIO" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "ProfilePicture", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "7fdccce0-e7cb-4294-8f9a-b8490e162584", 0, "6a4e33da-6343-42d0-9759-9c75d3d36c1c", new DateTime(2005, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "AppUser", "mclara18062005@gmail.com", true, false, null, "Maria Clara Carvalho dos Santos", "MCLARA18062005@GMAIL.COM", "MCLARA", "AQAAAAEAACcQAAAAEDnV7pqrhtCneHyc+UR/ebZ2G1O5vFTh19yjelNgNUm0F293WUfTRGqp93O17m9AkQ==", "14997692684", true, "/img/users/avatar.png", "e30e8321-dfa0-476a-900e-a85c6e76c957", false, "Mclara" });
+                values: new object[] { "964ee1b7-5a38-4e14-9aa5-ea30e5acf59e", 0, "b0b0a189-9c6a-4d7d-a771-f7dfd9114195", new DateTime(2005, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified), "AppUser", "admin@gmail.com", true, false, null, "Seu Nome Completo", "ADMIN@GMAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEH7OMpC3DkxOmZ/iKf9PrR9ARXQ6m1tazx3OA1kbPTBx2gHvGWxXqoIMv60oX5RAaw==", "14912345678", true, "/img/users/avatar.png", "56f198ce-62b1-4e59-a5f2-0211d8bfab2f", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "2f3663f1-42f3-4519-aa52-ede63f3567e0", "7fdccce0-e7cb-4294-8f9a-b8490e162584" });
+                values: new object[] { "6bc9d85b-fbfb-43a9-b1b2-3b6ddb200bd2", "964ee1b7-5a38-4e14-9aa5-ea30e5acf59e" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_MovieComment_MovieId",
@@ -365,8 +365,8 @@ namespace GalloFlix.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RoleClains_RoleId",
-                table: "RoleClains",
+                name: "IX_RoleClaims_RoleId",
+                table: "RoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
@@ -376,8 +376,8 @@ namespace GalloFlix.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserClains_UserId",
-                table: "UserClains",
+                name: "IX_UserClaims_UserId",
+                table: "UserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -414,10 +414,10 @@ namespace GalloFlix.Migrations
                 name: "MovieRating");
 
             migrationBuilder.DropTable(
-                name: "RoleClains");
+                name: "RoleClaims");
 
             migrationBuilder.DropTable(
-                name: "UserClains");
+                name: "UserClaims");
 
             migrationBuilder.DropTable(
                 name: "UserLogins");

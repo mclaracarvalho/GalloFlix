@@ -9,19 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Objetos auxiliares da conexão
+// Objetos auxiliares de Conexão
 string conn = builder.Configuration.GetConnectionString("GalloFlix");
 var version = ServerVersion.AutoDetect(conn);
 
-// Serviço de conexão com banco de dados
+// Serviço de Conexão com banco de dados
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(conn, version)
 );
 
-// Serviço de gestão de usuário - identity
-builder.Services.AddIdentity<AppUser, IdentityRole>()  //deixar claro onde será armezanados os dados:
+// Serviço de Gestão de Usuário - Identity
+builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
-    .AddDefaultTokenProviders();                                             
+    .AddDefaultTokenProviders();
+
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 

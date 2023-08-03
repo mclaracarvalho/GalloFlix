@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GalloFlix.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230601131430_criar-banco")]
-    partial class criarbanco
+    [Migration("20230803135047_criando-banco")]
+    partial class criandobanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,17 +56,17 @@ namespace GalloFlix.Migrations
                     b.Property<short>("MovieYear")
                         .HasColumnType("Year");
 
+                    b.Property<string>("OriginalTitle")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Synopsis")
                         .IsRequired()
                         .HasMaxLength(8000)
                         .HasColumnType("varchar(8000)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("TitleOriginal")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -130,7 +130,8 @@ namespace GalloFlix.Migrations
                         .HasColumnOrder(1);
 
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(255)");
+                        .HasColumnType("varchar(255)")
+                        .HasColumnOrder(2);
 
                     b.Property<DateTime>("RatingDate")
                         .HasColumnType("datetime(6)");
@@ -173,24 +174,24 @@ namespace GalloFlix.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2f3663f1-42f3-4519-aa52-ede63f3567e0",
-                            ConcurrencyStamp = "f4539b67-772c-4dc6-bfc0-b3d3c6ada8fd",
+                            Id = "6bc9d85b-fbfb-43a9-b1b2-3b6ddb200bd2",
+                            ConcurrencyStamp = "5d2324bb-4232-4f19-9b59-782419a68de3",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "818d51d9-0caa-441a-a52a-4d1c46e51cff",
-                            ConcurrencyStamp = "c1571980-e337-423a-8d29-ba78b55d85ff",
+                            Id = "9c17955c-bbdc-4048-ba9d-8c232ea24803",
+                            ConcurrencyStamp = "b79c8bc1-6496-41a0-b063-cbfb09450753",
                             Name = "Moderador",
                             NormalizedName = "MODERADOR"
                         },
                         new
                         {
-                            Id = "bbb21ce5-0043-495b-9c56-68d5201affa4",
-                            ConcurrencyStamp = "ff99b45d-3311-4ec9-a56b-2d8f19ea45b1",
+                            Id = "9c65df18-5646-4315-81b3-58655e7818c2",
+                            ConcurrencyStamp = "7bed6543-5804-4661-87ea-875a67046e5e",
                             Name = "Usuário",
-                            NormalizedName = "USUÁRIO"
+                            NormalizedName = " USUÁRIO"
                         });
                 });
 
@@ -214,7 +215,7 @@ namespace GalloFlix.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("RoleClains", (string)null);
+                    b.ToTable("RoleClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
@@ -307,7 +308,7 @@ namespace GalloFlix.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserClains", (string)null);
+                    b.ToTable("UserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -349,8 +350,8 @@ namespace GalloFlix.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "7fdccce0-e7cb-4294-8f9a-b8490e162584",
-                            RoleId = "2f3663f1-42f3-4519-aa52-ede63f3567e0"
+                            UserId = "964ee1b7-5a38-4e14-9aa5-ea30e5acf59e",
+                            RoleId = "6bc9d85b-fbfb-43a9-b1b2-3b6ddb200bd2"
                         });
                 });
 
@@ -394,22 +395,22 @@ namespace GalloFlix.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7fdccce0-e7cb-4294-8f9a-b8490e162584",
+                            Id = "964ee1b7-5a38-4e14-9aa5-ea30e5acf59e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6a4e33da-6343-42d0-9759-9c75d3d36c1c",
-                            Email = "mclara18062005@gmail.com",
+                            ConcurrencyStamp = "b0b0a189-9c6a-4d7d-a771-f7dfd9114195",
+                            Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
-                            NormalizedEmail = "MCLARA18062005@GMAIL.COM",
-                            NormalizedUserName = "MCLARA",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDnV7pqrhtCneHyc+UR/ebZ2G1O5vFTh19yjelNgNUm0F293WUfTRGqp93O17m9AkQ==",
-                            PhoneNumber = "14997692684",
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH7OMpC3DkxOmZ/iKf9PrR9ARXQ6m1tazx3OA1kbPTBx2gHvGWxXqoIMv60oX5RAaw==",
+                            PhoneNumber = "14912345678",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "e30e8321-dfa0-476a-900e-a85c6e76c957",
+                            SecurityStamp = "56f198ce-62b1-4e59-a5f2-0211d8bfab2f",
                             TwoFactorEnabled = false,
-                            UserName = "Mclara",
-                            DateOfBirth = new DateTime(2005, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Maria Clara Carvalho dos Santos",
+                            UserName = "Admin",
+                            DateOfBirth = new DateTime(2005, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Seu Nome Completo",
                             ProfilePicture = "/img/users/avatar.png"
                         });
                 });
