@@ -3,7 +3,7 @@
 @inject UserManager<AppUser> userManager
 @{
     var user = await userManager.GetUserAsync(User);
-    string profilePicture = user.ProfilePicture ?? "~/img/users/no-photo.png";
+    string profilePicture = user.ProfilePicture ?? "~/img/movies/logo.png";
 }
 
 <!DOCTYPE html>
